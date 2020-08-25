@@ -1,6 +1,9 @@
 import os
 from hashlib import md5, sha256
 
+from flask import session
+from flask import redirect
+
 
 def make_password(password):
     '''产生一个安全密码'''
@@ -45,7 +48,7 @@ def save_avatar(avatar_file):
     base_dir = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
 
     # 文件绝对路径
-    filepath = f'{base_dir}/static/upload/{filename}'
+    filepath = os.path.join(base_dir, 'static', 'upload', filename)
 
     # 保存文件
     avatar_file.save(filepath)
@@ -54,3 +57,13 @@ def save_avatar(avatar_file):
     avatar_url = f'/static/upload/{filename}'
 
     return avatar_url
+
+
+def login_required(view_func):
+    def check_session(*args, **kwargs):
+        uid = session.get('uid')
+        if not uid:
+            return redirect('/user/login')
+        else:
+            return view_func(*args, **kwargs)
+    return check_session
