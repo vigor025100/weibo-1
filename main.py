@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+
 from flask import Flask
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
 from libs.orm import db
+from user.views import user_bp
 
 # 初始化 app
 app = Flask(__name__)
@@ -17,6 +20,9 @@ manager = Manager(app)
 db.init_app(app)
 migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
+
+# 注册蓝图
+app.register_blueprint(user_bp)
 
 
 @app.route('/')
