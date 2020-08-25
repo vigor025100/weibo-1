@@ -5,16 +5,31 @@
 
 <!-- 处理错误信息 -->
 {% if err %}
-<div>{{ err }}</div>
+<div class="alert alert-danger" role="alert">
+  <p class="mb-0">{{ err }}</p>
+</div>
 {% endif %}
 
 <form action="/user/login" method="POST">
-  昵称 <input type="text" name="nickname" />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">昵称</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="nickname" />
+    </div>
+  </div>
 
-  密码 <input type="password" name="password" />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">密码</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" name="password" />
+    </div>
+  </div>
 
-  <button>登录</button>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-5">
+      <button class="btn btn-primary">登录</button>
+    </div>
+  </div>
 </form>
 {% endblock %}

@@ -6,20 +6,22 @@
 
 <hr />
 
-<img src="{{ user.avatar }}" width="200px" />
+<figure class="figure">
+  <img src="{{ user.avatar }}" class="figure-img img-fluid rounded" width="200px" />
+</figure>
 
-<ul>
+<ul class="list-group">
   {% if user.gender == 'male' %}
-  <li>性别：小哥哥</li>
+  <li class="list-group-item"><strong>性别</strong>：小哥哥</li>
   {% elif user.gender == 'female' %}
-  <li>性别：小姐姐</li>
+  <li class="list-group-item"><strong>性别</strong>：小姐姐</li>
   {% else %}
-  <li>性别：保密</li>
+  <li class="list-group-item"><strong>性别</strong>：保密</li>
   {% endif %}
 
-  <li>生日：{{ user.birthday }}</li>
-  <li>城市：{{ user.city }}</li>
-  <li>简介：{{ user.bio }}</li>
-  <li>注册时间：{{ user.created }}</li>
+  <li class="list-group-item"><strong>生日</strong>：{{ user.birthday }}</li>
+  <li class="list-group-item"><strong>城市</strong>：{{ user.city }}</li>
+  <li class="list-group-item"><strong>简介</strong>：{{ user.bio }}</li>
+  <li class="list-group-item"><strong>注册时间</strong>：{{ user.created }}</li>
 </ul>
 {% endblock %}

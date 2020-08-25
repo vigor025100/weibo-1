@@ -5,37 +5,86 @@
 
 <!-- 处理错误信息 -->
 {% if err %}
-<div>{{ err }}</div>
+<div class="alert alert-danger" role="alert">
+  <p class="mb-0">{{ err }}</p>
+</div>
 {% endif %}
 
 <form action="/user/register" method="POST" enctype="multipart/form-data">
-  昵称 <input type="text" name="nickname" />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">昵称</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="nickname" />
+    </div>
+  </div>
 
-  密码 <input type="password" name="password1" />
-  <br />
-  确认密码 <input type="password" name="password2" />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">密码</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" name="password1" />
+    </div>
+  </div>
 
-  性别
-  <br />
-  男<input type="radio" name="gender" value="male" /><br />
-  女<input type="radio" name="gender" value="female" /><br />
-  保密<input type="radio" name="gender" value="unknow" checked />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">确认密码</label>
+    <div class="col-sm-5">
+      <input type="password" class="form-control" name="password2" />
+    </div>
+  </div>
 
-  生日 <input type="date" name="birthday" min="1960-01-01" max="2000-01-01" />
-  <br />
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">性别</legend>
+      <div class="col-sm-5">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" value="male" />
+          <label class="form-check-label">男</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" value="female" />
+          <label class="form-check-label">女</label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="gender" value="unknow" checked />
+          <label class="form-check-label">保密</label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 
-  城市 <input type="text" name="city" />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">生日</label>
+    <div class="col-sm-5">
+      <input type="date" class="form-control" name="birthday" min="1960-01-01" max="2002-12-31" />
+    </div>
+  </div>
 
-  头像 <input type="file" name="avatar" />
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">城市</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="city" />
+    </div>
+  </div>
 
-  简介 <textarea name="bio" rows="5"></textarea>
-  <br />
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">头像</label>
+    <div class="col-sm-5">
+      <input type="file" class="form-control-file" name="avatar" />
+    </div>
+  </div>
 
-  <button>点击注册</button>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">简介</label>
+    <div class="col-sm-8">
+      <textarea class="form-control" name="bio" rows="5"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-5">
+      <button class="btn btn-success">点击注册</button>
+    </div>
+  </div>
 </form>
 {% endblock %}
